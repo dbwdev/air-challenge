@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+# Air Frontend Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Additonal Criteria
+- [ ]  Polish
 
-## Available Scripts
+    Time permitting, try to find ways to enhance the experience of the site with loading states, animations, and design enhancements.
 
-In the project directory, you can run:
+    * Not implemented, but I would have added skeloton loading states for the cards before they have been rendered.
 
-### `yarn start`
+- [ ]  Responsiveness
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    We are purposefully not providing a mobile design because we'd like to see what you can come up with when designs haven't been given. Use your best judgment on how you think the page would respond at smaller sizes. The page should be able to be resized down to `320px` wide without compromising the UX.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    * Not implemented, but I would try to rearrange the card image on top and the name and description on the bottom to make the cards more readable at on smaller screens.
 
-### `yarn test`
+- [ ]  SEO friendliness
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Use best practice semantic markup and structured data.
 
-### `yarn build`
+    * Given more time, I would add the proper titles, meta tags and other SEO enhancements using `react-helmet`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ ]  Accessibility
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Think about screen readers and users with any disabilities. Follow the best practices as set forth and discussed by [The A11Y Project](https://a11yproject.com/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    * Given more time, I would audit app using `react-app` and other a11y tools to implement ARIA labels where necessary, ensure good UX with keyboard and tabbing, etc.
 
-### `yarn eject`
+- [ ]  Performance
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    The faster your page loads and performs while using it, the better.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    * Given more time, I would have implemented a more sophisticaed search algorithm which uses memoization to more performantly render the card list. Since the card list does not change much (in the context of this challenge) it is a good candidate for caching via memoization.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [ ]  Testing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    Tests proving your application works make us happy. Integration tests in particular!
 
-## Learn More
+    * Not implemented, but the first integration tests I would write for are `PeopleSearch` for the search/filter  functionality and the `PeopleList` for rendering the cards in the DOM using `react-testing-library`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [ ]  Code Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    We will be looking at how you structured your React components. We strongly encourage using TypeScript as it helps a new developer (like the person who will be reviewing your code) understand how your components work
+
+    * My code structure given the scope of this project while leaving room for scaling to more engineers working in this codebase:
+
+```sh
+│   ├── api // for HTTP requests to backend services, currently holds the the mock function to get list of people
+│   ├── app // holds top level React framework files near the top of the component hierarchy
+│   ├── assets // holds static images, icons, etc.
+│   │   └── icons
+│   ├── common // shared utilites, hooks, types, etc.
+│   │   ├── hooks // shared hooks not tied to logic of a particular domain
+│   │   ├── styles // `styled-component` global styles and variables
+│   │   ├── types // shared and custom TS types
+│   │   └── utils // shared utilities, mostly pure functions and with minimal side effets
+│   ├── components // shared components across pages
+│   │   └── ui // for non-React UI-only `styled-components` components
+│   ├── index.tsx // app entry point, keeping logic here as thin as possible
+│   ├── pages // for route level container components, would use router like `react-router` if challenge involved multiple pages
+│   └── store // For holding domain related state and actions
+|      ├── contexts // React context state organized by domain
+│       └── hooks // React state setters, getters, and side effects organized by domain
+```
