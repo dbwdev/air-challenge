@@ -32,6 +32,8 @@ Deployed site: https://airchallenge.netlify.app
 
     * Given more time, I would have implemented a more sophisticaed search algorithm which uses memoization to more performantly render the card list. Since the card list does not change much (in the context of this challenge) it is a good candidate for caching via memoization.
 
+    * Additionally, I would have implemented windowing with a library like `react-window`  for increasing TTFB of the card list and overall better performance by lowering memory usage of DOM nodes
+
 - [ ]  Testing
 
     Tests proving your application works make us happy. Integration tests in particular!
