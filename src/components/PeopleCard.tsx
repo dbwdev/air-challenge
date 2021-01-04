@@ -1,4 +1,4 @@
-import { blackPigeon7, gray, grayPigeon5 } from 'common/styles/colors';
+import { gray, grayPigeon5 } from 'common/styles/colors';
 import { Person } from 'store/hooks/usePeople';
 import styled from 'styled-components';
 

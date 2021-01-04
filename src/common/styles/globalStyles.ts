@@ -1,9 +1,4 @@
-import {
-  blackPigeon7,
-  darkBlueJay8,
-  offwhite,
-  white,
-} from 'common/styles/colors';
+import { blackPigeon7, darkBlueJay8, white } from 'common/styles/colors';
 import { normalize } from 'polished';
 import { createGlobalStyle } from 'styled-components';
 
